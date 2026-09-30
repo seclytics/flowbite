@@ -103,6 +103,10 @@ class Carousel implements CarouselInterface {
 
     destroy() {
         if (this._initialized) {
+            // stop an auto-cycling (data-carousel="slide") interval so it
+            // doesn't keep ticking against a detached element
+            this.pause();
+            this._intervalInstance = null;
             this._initialized = false;
         }
     }
